@@ -60,10 +60,8 @@ function getitemQty() {
         if (isNaN(value) === false) {
           return true;
         }
-        // return false;
-        // exit app
         console.log('Oops, item id can only be a number. Please try again.');
-        process.exit(1);
+        return false;
       }
     }, {
       name: "item_qty",
@@ -73,7 +71,6 @@ function getitemQty() {
         if (isNaN(value) === false) {
           return true;
         }
-        // exit app
         console.log('Oops, item quantity can only be a number. Please try again.');
         return false;
     }}
@@ -92,7 +89,7 @@ function getitemQty() {
         orderItem(answer.item_id, newQty, totalPrice);
       } else {
         console.log(divider
-          + `Sorry, insufficient quantity... \n`
+          + `Insufficient quantity... \n`
           + `Please try a different item or quantity`);
         // exit app
         connection.end();

@@ -117,7 +117,7 @@ function addInventory() {
   ]).then(function (answer) {
     var query = `SELECT product_name, stock_quantity from products WHERE item_id=${answer.item_id}`;
     connection.query(query, function (err, res) {
-      console.log(res);
+      // console.log(res);
       // check if item exists
       if (res.length >= 1) {
         var itemQty = res[0].stock_quantity;
@@ -178,9 +178,9 @@ function addNewProduct() {
         console.log(`Adding new item...`);
         addItem(answer.item_name, answer.dept_name, answer.item_price, answer.item_qty);
       } else {
-        var itemName = res[0].stock_quantity;
+        var itemName = res[0].product_name;
         console.log(divider
-          + `Oops... Item name ${itemName} already exists. Please try again.`);
+          + `Hmm... Item name ${itemName} already exists. Please try again.`);
         // exit app
         connection.end();
         process.exit(1);
